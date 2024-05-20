@@ -67,7 +67,7 @@ public class SignUpService {
     }
 
     private void sendConfirmationEmail(String email, String token) {
-        String confirmationLink = "http://"+ actualAPIDomainConfig.getACTUAL_API_DOMAIN() + "/auth/confirm?emailToken=" + token;
+        String confirmationLink = "https://"+ actualAPIDomainConfig.getACTUAL_API_DOMAIN() + "/auth/confirm?emailToken=" + token;
         String emailBody = emailService.buildEmail(email, confirmationLink);
         emailSender.send(email, emailBody);
     }
