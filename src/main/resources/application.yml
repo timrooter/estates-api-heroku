@@ -1,0 +1,73 @@
+#server:
+#  port: 8080
+spring:
+  application:
+    name: estates-api
+    actual-api-domain: localhost:8080 # if use real domain, please remove server.port
+    actual-ui-domain: 192.168.1.73:3000
+  jpa:
+    hibernate:
+      ddl-auto: create-drop
+#  datasource:
+#    url: jdbc:postgresql://localhost:5432/postgres
+#    username: postgres
+#    password: 1953
+  datasource:
+    url: jdbc:postgresql://rain.db.elephantsql.com:5432/bhoyqvin
+    username: bhoyqvin
+    password: 341M2nN6zwho7QJZUU4ZDcqUuYvSM5Cr
+
+
+  security:
+    mixed-content:
+      mode: NEVER
+    oauth2:
+      client:
+        registration:
+          github:
+            #            clientId: ${GITHUB_CLIENT_ID}
+            #            clientSecret: ${GITHUB_CLIENT_SECRET}
+            client-id: 439a4cf44e2c76476107
+            client-secret: 8da5801eebd6775cd0d95db18511f64d0805af7a
+            scope: read:user, user:email
+          google:
+            #            clientId: ${GOOGLE_CLIENT_ID}
+            #            clientSecret: ${GOOGLE_CLIENT_SECRET}
+            client-id: 187578762186-npifbq0h91vsuvigjpdrepb71hk520td.apps.googleusercontent.com
+            client-secret: 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
+            scope: profile, email
+
+  mail:
+    host: live.smtp.mailtrap.io # mailtrap.io smtp server
+    port: 587
+    username: api
+    password: a248a338947729596c7510f7d28bc186
+    properties:
+      mail:
+        smtp:
+          ssl:
+            trust: "*"
+          auth: true
+          starttls:
+            enable: true
+app:
+  jwt:
+    # Signing key for HS512 algorithm
+    # In http://www.allkeysgenerator.com/ you can generate all kinds of keys
+    secret: v9y$B&E)H@MbQeThWmZq4t7w!z%C*F-JaNdRfUjXn2r5u8x/A?D(G+KbPeShVkYp
+    expiration:
+      minutes: 10
+  oauth2:
+    redirectUri: http://192.168.1.73:3000/oauth2/redirect
+  cors:
+    allowed-origins: http://192.168.1.73:3000, http://localhost:8080
+
+logging:
+  level:
+    org.springframework.security: DEBUG
+    # org.hibernate.SQL: DEBUG
+
+paypal:
+  client-id: AeGIiQ0SpwlV9gSnl2q_Be0vAO-cmXoN98RrMwpHL3p1mPrDJR3aVmvnvCnd4Jn5N4abOEq80CLpLtrv
+  client-secret: EMJ98n3TE-vcKeWO6pDnIdrY_iyscpzJUAJFGnnBU64n0BEd8Lo6cWptWatOefHeCLBY3MDr4NM5l4A0
+  mode: sandbox # Use #sandbox' for testing and 'live' for Production
