@@ -3,7 +3,7 @@
 spring:
   application:
     name: estates-api
-    actual-api-domain: localhost:8080 # if use real domain, please remove server.port
+    actual-api-domain: https://estates-api-0827ea492f0a.herokuapp.com/ # if use real domain, please remove server.port
     actual-ui-domain: 192.168.1.73:3000
   jpa:
     hibernate:
