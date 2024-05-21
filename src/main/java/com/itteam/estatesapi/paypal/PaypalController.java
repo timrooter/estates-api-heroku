@@ -99,8 +99,8 @@ public class PaypalController {
     @PostMapping("/create")
     public String createPayment() {
         try {
-            String cancelUrl = "http://" + ACTUAL_UI_DOMAIN + "/payment/cancel";
-            String successUrl = "http://" + ACTUAL_UI_DOMAIN + "/payment/success";
+            String cancelUrl = ACTUAL_UI_DOMAIN + "/payment/cancel";
+            String successUrl = ACTUAL_UI_DOMAIN + "/payment/success";
             double amount = 50.00;
             String method = "paypal";
             String currency = "USD";
@@ -137,13 +137,13 @@ public class PaypalController {
         try {
             Payment payment = paypalService.executePayment(paymentId, payerId);
             if (payment.getState().equals("approved")) {
-                response.sendRedirect("http://" + ACTUAL_UI_DOMAIN + "/payment/success");
+                response.sendRedirect(ACTUAL_UI_DOMAIN + "/payment/success");
             } else {
-                response.sendRedirect("http://" + ACTUAL_UI_DOMAIN + "/payment/cancel");
+                response.sendRedirect(ACTUAL_UI_DOMAIN + "/payment/cancel");
             }
         } catch (PayPalRESTException e) {
             log.error("Error occurred:: ", e);
-            response.sendRedirect("http://" + ACTUAL_UI_DOMAIN + "/payment/error");
+            response.sendRedirect(ACTUAL_UI_DOMAIN + "/payment/error");
         }
     }
 

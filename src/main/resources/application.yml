@@ -3,8 +3,9 @@
 spring:
   application:
     name: estates-api
-    actual-api-domain: estates-api-0827ea492f0a.herokuapp.com # if use real domain, please remove server.port
-    actual-ui-domain: 192.168.1.73:3000
+    actual-api-domain: https://estates-api-7c268b8bb547.herokuapp.com # if use real domain, please remove server.port
+    actual-ui-domain: http://172.20.10.3:3000
+
   jpa:
     hibernate:
       ddl-auto: create-drop
@@ -58,9 +59,9 @@ app:
     expiration:
       minutes: 10
   oauth2:
-    redirectUri: http://192.168.1.73:3000/oauth2/redirect
+    redirectUri: ${spring.application.actual-ui-domain}/oauth2/redirect
   cors:
-    allowed-origins: http://192.168.1.73:3000, http://localhost:8080
+    allowed-origins: ${spring.application.actual-ui-domain}, http://localhost:8080, http://localhost:3000
 
 logging:
   level:

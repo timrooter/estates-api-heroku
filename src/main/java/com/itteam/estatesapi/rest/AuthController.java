@@ -50,11 +50,11 @@ public class AuthController {
     public void confirm(@RequestParam("emailToken") String emailToken, HttpServletResponse response) throws IOException {
         try {
             signUpService.confirmToken(emailToken);
-            String redirectUrl = "http://" + actualUIDomainConfig.getACTUAL_UI_DOMAIN() + "/emailconfirm";
+            String redirectUrl = actualUIDomainConfig.getACTUAL_UI_DOMAIN() + "/emailconfirm";
             response.sendRedirect(redirectUrl);
         } catch (IllegalStateException e) {
             // Handle the exceptions and redirect accordingly
-            String errorRedirectUrl = "http://" + actualUIDomainConfig.getACTUAL_UI_DOMAIN() + "/emailconfirm/error";
+            String errorRedirectUrl = actualUIDomainConfig.getACTUAL_UI_DOMAIN() + "/emailconfirm/error";
             response.sendRedirect(errorRedirectUrl);
         }
     }
